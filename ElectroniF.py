@@ -10,19 +10,13 @@ class GenerarFactura:
         self.precio = precio
         self.subtotal = subtotal
 
-    def subtotal(self, listObjs):
-
-        acum = 0
-
-        for z in range(len(listObjs)):
-
-    def producto(self):
+    def producto(self, listObjs):
 
         print("Factura Electronica")
 
         print(f"Fecha: {datetime.now().strftime("%d%m%Y")}")
         
-        for z in range(len(self.listClase)):
+        for z in range(len(listObjs)):
 
             for w in z:
 
