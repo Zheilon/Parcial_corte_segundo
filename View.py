@@ -72,3 +72,5 @@ def menuInventory():
 
             print("\nSolo se Permiten Caracteres numéricos!\n")
 
+
+

@@ -18,7 +18,7 @@ while True:
 
         elif menuVt == 2:
 
-            pass
+            mostrarCantidadVendida()
 
         elif menuVt == 3:
 
