@@ -1,6 +1,9 @@
 from View import *
 from Inventory import *
 from Sells import *
+from ElectroniF import *
+
+print("ELECTRO MUNDO SAS")
 
 while True:
 
@@ -22,7 +25,6 @@ while True:
 
         elif menuVt == 3:
 
-            pass
 
     #INVENTARIO
 
