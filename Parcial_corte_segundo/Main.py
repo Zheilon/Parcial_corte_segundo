@@ -2,6 +2,7 @@ from View import *
 from Inventory import *
 from Sells import *
 from ElectroniF import *
+from ElectroniF import menu_facturacion
 
 print("ELECTRO MUNDO SAS")
 
@@ -42,8 +43,10 @@ while True:
             showTable()
 
     elif option == 3:
+        menu_facturacion()
+        
 
-        pass #Factura
+        pass 
 
     #Salir
 
