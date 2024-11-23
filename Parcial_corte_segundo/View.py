@@ -36,7 +36,7 @@ def menuVentas():
 
     os.system('cls')
 
-    print("1.) Comprar\n\n2.) Cantidades vendidas\n\n3.) Agregar nuevos productos")
+    print("1.) Comprar\n\n2.) Cantidades vendidas\n\n3.) Salir\n")
 
     while True: 
 
@@ -66,7 +66,7 @@ def menuInventory():
 
     os.system('cls')
 
-    print("1.) Agregar Producto\n\n2.) Mostrar Inventario\n")
+    print("1.) Agregar Producto\n\n2.) Mostrar Inventario\n\n3.) Salir\n")
 
     while True: 
 
@@ -74,7 +74,7 @@ def menuInventory():
 
             option = int(input("Selecciona opción: "))
 
-            if option > 0 and option < 3:
+            if option > 0 and option < 4:
 
                 return option
             

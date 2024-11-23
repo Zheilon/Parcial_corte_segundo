@@ -20,9 +20,9 @@ def agregarVenta():
 
     for z in range(len(inventoryMatrix)):
 
-        for w in range(len(inventoryMatrix[0])):
+        if inventoryMatrix[z][0] == codeProduct:
 
-            if inventoryMatrix[z][0] == codeProduct and inventoryMatrix[z][3] > cantidadCompra:
+            if inventoryMatrix[z][3] > cantidadCompra:
 
                 inventoryMatrix[z][3] -= cantidadCompra
 
@@ -39,7 +39,7 @@ def cantidadVent(code, cantidad):
 
         for z in range(len(matrixCantidadVendida)):
 
-            for w in range(len(matrixCantidadVendida[0])):
+            for m in range(len(matrixCantidadVendida[0])):
 
                 if matrixCantidadVendida[z][0] != code:
 
