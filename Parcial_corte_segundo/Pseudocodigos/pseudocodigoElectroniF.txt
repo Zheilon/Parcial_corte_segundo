@@ -1,0 +1,113 @@
+facturas <- []
+
+Clase GenerarFactura
+    Definir nombre
+    Definir cantidad
+    Definir precio
+    Definir subtotal
+
+    Metodo __init__(nombre, cantidad, precio)
+        nombre <- nombre
+        cantidad <- cantidad
+        precio <- precio
+        subtotal <- cantidad * precio
+    Fin Metodo
+
+    Metodo mostrar_producto()
+        Retornar [nombre, cantidad, precio, subtotal]
+    Fin Metodo
+Fin Clase
+
+Metodo mostrar_detalles(productos)
+    Escribir "\nDetalles de los productos comprados:"
+    headers <- ["Nombre", "Cantidad", "Precio", "Subtotal"]
+    table <- Para cada producto en productos Hacer
+        Agregar producto.mostrar_producto() a table
+    Fin Para
+    Imprimir tabla con formato fancy_grid
+Fin Metodo
+
+Metodo calcular_totales(productos)
+    subtotal <- 0
+    Para cada producto en productos Hacer
+        subtotal <- subtotal + producto.subtotal
+    Fin Para
+    iva <- subtotal * 0.19
+    total <- subtotal + iva
+    Retornar subtotal, iva, total
+Fin Metodo
+
+Metodo guardar_factura(productos, subtotal, iva, total)
+    factura <- Crear un diccionario
+    factura["productos"] <- Para cada producto en productos Hacer
+        Agregar producto.__dict__ a factura["productos"]
+    Fin Para
+    factura["subtotal"] <- subtotal
+    factura["iva"] <- iva
+    factura["total"] <- total
+    factura["fecha"] <- Fecha actual en formato "%d/%m/%Y %H:%M:%S"
+    Agregar factura a facturas
+    Escribir "\nFactura guardada para futuras consultas."
+Fin Metodo
+
+Metodo mostrar_facturas()
+    Si facturas está vacía Entonces
+        Escribir "No hay facturas guardadas."
+        Retornar
+    Fin Si
+
+    Para cada factura en facturas Hacer
+        Imprimir "\nFactura N° X:" con la fecha de la factura
+        Imprimir detalles de los productos
+        Imprimir subtotal, iva y total
+    Fin Para
+Fin Metodo
+
+Metodo menu_facturacion()
+    productos <- []
+    Mientras Verdadero Hacer
+        Escribir "\nMenú de Facturación:"
+        Escribir "1. Ingresar producto"
+        Escribir "2. Mostrar detalles de la factura"
+        Escribir "3. Calcular y mostrar totales"
+        Escribir "4. Guardar factura"
+        Escribir "5. Mostrar facturas guardadas"
+        Escribir "6. Volver al menú principal"
+        opcion <- Leer opción
+
+        Si opcion = "1" Entonces
+            nombre <- Leer nombre del producto
+            cantidad <- Leer cantidad
+            precio <- Leer precio
+            producto <- Crear una nueva instancia de GenerarFactura(nombre, cantidad, precio)
+            Agregar producto a productos
+        SinoSi opcion = "2" Entonces
+            Si productos no está vacío Entonces
+                Llamar a mostrar_detalles(productos)
+            Sino
+                Escribir "No hay productos ingresados."
+            Fin Si
+        SinoSi opcion = "3" Entonces
+            Si productos no está vacío Entonces
+                subtotal, iva, total <- Calcular los totales
+                Escribir subtotal, iva, total
+            Sino
+                Escribir "No hay productos ingresados."
+            Fin Si
+        SinoSi opcion = "4" Entonces
+            Si productos no está vacío Entonces
+                subtotal, iva, total <- Calcular los totales
+                Guardar la factura con los totales
+                Limpiar la lista de productos
+            Sino
+                Escribir "No hay productos ingresados."
+            Fin Si
+        SinoSi opcion = "5" Entonces
+            Mostrar las facturas guardadas
+        SinoSi opcion = "6" Entonces
+            Salir
+        Sino
+            Escribir "Opción inválida, por favor ingrese una opción válida."
+        Fin Si
+    Fin Mientras
+Fin Metodo

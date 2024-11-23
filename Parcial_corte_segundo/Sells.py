@@ -24,16 +24,16 @@ def agregarVenta():
 
                 inventoryMatrix[z][3] -= cantidadCompra
 
-                cantidadVent(codeProduct, cantidadCompra)
+                cantidadVent(codeProduct, inventoryMatrix[z][1], cantidadCompra)
 
 
-def cantidadVent(code, cantidad):
+def cantidadVent(code, name, cantidad):
 
     """Función encargada de registrar las ventas de cada producto."""
 
     if not matrixCantidadVendida:
 
-        matrixCantidadVendida.append([code, cantidad])
+        matrixCantidadVendida.append([code, name, cantidad])
 
     else:
 
@@ -41,17 +41,17 @@ def cantidadVent(code, cantidad):
 
             if matrixCantidadVendida[z][0] != code:
 
-                matrixCantidadVendida.append([code, cantidad])
+                matrixCantidadVendida.append([code, name, cantidad])
 
             else:
 
-                matrixCantidadVendida[z][1] += cantidad
+                matrixCantidadVendida[z][2] += cantidad
 
 
 def mostrarCantidadVendida():
 
     """Función encargada de mostrar la cantidad vendida de productos."""
 
-    header = ["Código", "Cantidad Vendida"]
+    header = ["Código", "Producto", "Cantidad Vendida"]
 
     print(tabulate(matrixCantidadVendida, headers=header, tablefmt="fancy_grid"))

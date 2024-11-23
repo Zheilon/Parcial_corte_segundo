@@ -1,0 +1,78 @@
+Definir inventoryMatrix Como Lista
+Definir matrixCantidadVendida Como Lista
+
+Proceso agregarVenta
+    // Limpiar la pantalla
+    LimpiarPantalla()
+    Escribir "Productos disponibles:"
+    showTable()
+
+    // Seleccionar producto y cantidad a comprar
+    Escribir "Selecciona código de producto a comprar:"
+    Leer codeProduct
+    codeProduct <- Mayusculas(codeProduct)
+
+    Escribir "Ingresa la cantidad que deseas comprar:"
+    Leer cantidadCompra
+
+    // Buscar el producto y realizar la venta
+    Para z <- 1 Hasta Largo(inventoryMatrix) Hacer
+        Si inventoryMatrix[z - 1][0] = codeProduct Y inventoryMatrix[z - 1][3] > cantidadCompra Entonces
+            inventoryMatrix[z - 1][3] <- inventoryMatrix[z - 1][3] - cantidadCompra
+
+            cantidadVent(
+                inventoryMatrix[z - 1][0], 
+                inventoryMatrix[z - 1][1], 
+                cantidadCompra
+            )
+        Fin Si
+    Fin Para
+FinProceso
+
+Proceso cantidadVent (code, name, cantidad)
+    // Verificar si matrixCantidadVendida está vacía
+    Si EsListaVacia(matrixCantidadVendida) Entonces
+        AgregarElemento(matrixCantidadVendida, [code, name, cantidad])
+    SiNo
+        Para z <- 1 Hasta Largo(matrixCantidadVendida) Hacer
+            Si matrixCantidadVendida[z - 1][0] = code Entonces
+                matrixCantidadVendida[z - 1][2] <- matrixCantidadVendida[z - 1][2] + cantidad
+                TerminarProceso
+            Fin Si
+        Fin Para
+
+        // Si no se encontró el código, agregar un nuevo registro
+        AgregarElemento(matrixCantidadVendida, [code, name, cantidad])
+    Fin Si
+FinProceso
+
+Proceso mostrarCantidadVendida
+    // Encabezados de la tabla
+    Definir header Como Lista
+    header <- ["Código", "Producto", "Cantidad Vendida"]
+
+    // Mostrar la tabla de ventas
+    Escribir "CANTIDAD VENDIDA:"
+    Para cada fila En matrixCantidadVendida Hacer
+        Para cada columna En fila Hacer
+            Escribir columna Sin Saltar
+            Escribir " | " Sin Saltar
+        Fin Para
+        Escribir "" // Nueva línea
+    Fin Para
+FinProceso
+
+Proceso showTable
+    // Encabezados de la tabla del inventario
+    Definir headers Como Lista
+    headers <- ["Código", "Nombre", "Precio Unitario", "Stock", "Categoría"]
+
+    Escribir "INVENTARIO:"
+    Para cada fila En inventoryMatrix Hacer
+        Para cada columna En fila Hacer
+            Escribir columna Sin Saltar
+            Escribir " | " Sin Saltar
+        Fin Para
+        Escribir "" // Nueva línea
+    Fin Para
+FinProceso

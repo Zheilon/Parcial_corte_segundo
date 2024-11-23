@@ -1,0 +1,58 @@
+Escribir "ELECTRO MUNDO SAS"
+
+Mientras Verdadero Hacer
+    // Mostrar el menú principal
+    option <- menu()
+
+    // Opción 1: Ventas
+    Si option = 1 Entonces
+        Mientras Verdadero Hacer
+            menuVt <- menuVentas()
+
+            Si menuVt = 1 Entonces
+                agregarVenta()
+            SinoSi menuVt = 2 Entonces
+                mostrarCantidadVendida()
+            SinoSi menuVt = 3 Entonces
+                // Salir de esta sección de ventas
+                Salir
+            FinSi
+
+            Escribir "Deseas continuar? S / N: "
+            Leer confirm
+
+            Si confirm = "N" Entonces
+                Salir
+            FinSi
+        Fin Mientras
+    FinSi
+
+    // Opción 2: Inventario
+    SinoSi option = 2 Entonces
+        Mientras Verdadero Hacer
+            menuIn <- menuInventory()
+
+            Si menuIn = 1 Entonces
+                addProduct()
+            SinoSi menuIn = 2 Entonces
+                showTable()
+            SinoSi menuIn = 3 Entonces
+                Salir
+            FinSi
+
+            Escribir "Deseas continuar? S / N: "
+            Leer confirm
+
+            Si confirm = "N" Entonces
+                Salir
+            FinSi
+        Fin Mientras
+    FinSi
+
+    // Opción 3: Facturación
+    SinoSi option = 3 Entonces
+        menu_facturacion()
+        // Salir después de mostrar el menú de facturación
+        Salir
+    FinSi
+Fin Mientras

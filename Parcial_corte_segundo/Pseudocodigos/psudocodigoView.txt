@@ -1,0 +1,53 @@
+Proceso menu
+    LimpiarPantalla()
+    Escribir "1.) Registrar venta"
+    Escribir "2.) Gestionar Catálogo de productos"
+    Escribir "3.) Generar Factura Electrónica"
+    
+    Mientras Verdadero Hacer
+        Escribir "Selecciona opción:"
+        Leer option
+
+        Si option >= 1 Y option <= 3 Entonces
+            Retornar option
+        SiNo
+            Escribir "Rango no permitido!"
+        Fin Si
+    Fin Mientras
+FinProceso
+
+Proceso menuVentas
+    LimpiarPantalla()
+    Escribir "1.) Comprar"
+    Escribir "2.) Cantidades vendidas"
+    Escribir "3.) Salir"
+    
+    Mientras Verdadero Hacer
+        Escribir "Selecciona opción:"
+        Leer option
+
+        Si option >= 1 Y option <= 3 Entonces
+            Retornar option
+        SiNo
+            Escribir "Rango no permitido!"
+        Fin Si
+    Fin Mientras
+FinProceso
+
+Proceso menuInventory
+    LimpiarPantalla()
+    Escribir "1.) Agregar Producto"
+    Escribir "2.) Mostrar Inventario"
+    Escribir "3.) Salir"
+    
+    Mientras Verdadero Hacer
+        Escribir "Selecciona opción:"
+        Leer option
+
+        Si option >= 1 Y option <= 3 Entonces
+            Retornar option
+        SiNo
+            Escribir "Rango no permitido!"
+        Fin Si
+    Fin Mientras
+FinProceso

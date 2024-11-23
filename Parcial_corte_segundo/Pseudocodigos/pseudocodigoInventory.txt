@@ -1,0 +1,72 @@
+Definir inventoryMatrix Como Lista
+
+Proceso addProduct
+    LimpiarPantalla()
+    Escribir "¿Cuántos productos deseas ingresar?"
+    Leer count
+
+    Mientras count > 0 Hacer
+        LimpiarPantalla()
+        Escribir "Ingresa código único del producto:"
+        Leer codigo
+        codigo <- Mayusculas(codigo)
+
+        LimpiarPantalla()
+        Escribir "Ingresa nombre del producto:"
+        Leer nombre
+        nombre <- Mayusculas(nombre)
+
+        LimpiarPantalla()
+        Escribir "Ingresa precio unitario:"
+        Leer precio_unitario
+
+        LimpiarPantalla()
+        categoria <- categories()
+
+        LimpiarPantalla()
+        Escribir "Ingresa cantidad de producto:"
+        Leer cantidadP
+
+        // Añadir producto a la matriz
+        AgregarElemento(inventoryMatrix, [codigo, nombre, precio_unitario, cantidadP, categoria])
+
+        count <- count - 1
+    Fin Mientras
+FinProceso
+
+Proceso showTable
+    // Encabezados de la tabla
+    Definir headers Como Lista
+    headers <- ["Código", "Nombre", "Precio Unitario", "Stock", "Categoría"]
+
+    // Mostrar inventario
+    Escribir "INVENTARIO:"
+    Para cada fila En inventoryMatrix Hacer
+        Para cada columna En fila Hacer
+            Escribir columna Sin Saltar
+            Escribir " | " Sin Saltar
+        Fin Para
+        Escribir "" // Nueva línea
+    Fin Para
+FinProceso
+
+Funcion categories Como Texto
+    Definir listC Como Lista
+    listC <- ["Línea Blanca", "Pequeños Electrodomésticos", "Entretenimiento", "Aires Acondicionados"]
+
+    Escribir "CATEGORÍAS:"
+    Para z <- 1 Hasta Largo(listC) Hacer
+        Escribir z, ". ", listC[z - 1]
+    Fin Para
+
+    Mientras Verdadero Hacer
+        Escribir "Selecciona una opción:"
+        Leer option
+
+        Si option >= 1 Y option <= Largo(listC) Entonces
+            Retornar listC[option - 1]
+        SiNo
+            Escribir "¡Opción fuera de rango!"
+        Fin Si
+    Fin Mientras
+FinFuncion
