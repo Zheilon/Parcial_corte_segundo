@@ -14,33 +14,53 @@ while True:
 
     if option == 1:
 
-        menuVt = menuVentas()
+        while True:
 
-        if menuVt == 1:
+            menuVt = menuVentas()
 
-            agregarVenta()
+            if menuVt == 1:
 
-        elif menuVt == 2:
+                agregarVenta()
 
-            mostrarCantidadVendida()
+            elif menuVt == 2:
 
-        elif menuVt == 3:
+                mostrarCantidadVendida()
 
-            pass
+            elif menuVt == 3:
+
+                pass
+
+            confirm = str(input("Deseas continuar? S / N: "))
+
+            if confirm.upper() == "N":
+
+                break
 
     #INVENTARIO
 
     elif option == 2:
 
-        menuIn = menuInventory()
+        while True:
 
-        if menuIn == 1:
+            menuIn = menuInventory()
 
-            addProduct()
+            if menuIn == 1:
 
-        elif menuIn == 2:
+                addProduct()
 
-            showTable()
+            elif menuIn == 2:
+
+                showTable()
+
+            elif menuIn == 3:
+
+                break
+
+            confirm = str(input("Deseas continuar? S / N: "))
+
+            if confirm.upper() == "N":
+
+                break
 
     elif option == 3:
         menu_facturacion()
