@@ -20,9 +20,7 @@ def agregarVenta():
 
     for z in range(len(inventoryMatrix)):
 
-        if inventoryMatrix[z][0] == codeProduct:
-
-            if inventoryMatrix[z][3] > cantidadCompra:
+        if inventoryMatrix[z][0] == codeProduct and inventoryMatrix[z][3] > cantidadCompra:
 
                 inventoryMatrix[z][3] -= cantidadCompra
 
@@ -30,6 +28,8 @@ def agregarVenta():
 
 
 def cantidadVent(code, cantidad):
+
+    """Función encargada de registrar las ventas de cada producto."""
 
     if not matrixCantidadVendida:
 
@@ -39,15 +39,13 @@ def cantidadVent(code, cantidad):
 
         for z in range(len(matrixCantidadVendida)):
 
-            for m in range(len(matrixCantidadVendida[0])):
+            if matrixCantidadVendida[z][0] != code:
 
-                if matrixCantidadVendida[z][0] != code:
+                matrixCantidadVendida.append([code, cantidad])
 
-                    matrixCantidadVendida.append([code, cantidad])
+            else:
 
-                else:
-
-                    matrixCantidadVendida[z][1] += cantidad
+                matrixCantidadVendida[z][1] += cantidad
 
 
 def mostrarCantidadVendida():

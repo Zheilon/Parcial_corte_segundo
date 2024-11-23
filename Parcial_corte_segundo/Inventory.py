@@ -61,7 +61,7 @@ def categories():
 
     """Función encargada de mostrar las categorias y retornar la selección."""
 
-    listC = ["Lína Blanca", "Pequeños Electrodomesticos", "Entretenimiento", "Aires Acondicionadores"]
+    listC = ["Línea Blanca", "Pequeños Electrodomésticos", "Entretenimiento", "Aires Acondicionados"]
 
     print("Categorias:\n")
 
